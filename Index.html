@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mysterious Dude TV</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto Mono', monospace;
+      background: #0d0d0d;
+      color: #f0f0f0;
+    }
+    header {
+      background: #111;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 1px solid #333;
+    }
+    header h1 {
+      margin: 0;
+      color: #ff0033;
+    }
+    nav {
+      text-align: center;
+      padding: 10px 0;
+    }
+    nav a {
+      color: #f0f0f0;
+      margin: 0 15px;
+      text-decoration: none;
+    }
+    .section {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    textarea, input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      background: #1c1c1c;
+      color: #fff;
+      border: 1px solid #333;
+    }
+    button {
+      background: #ff0033;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    .comment-box {
+      background: #1c1c1c;
+      padding: 10px;
+      margin-top: 15px;
+      border: 1px solid #333;
+    }
+    footer {
+      background: #111;
+      text-align: center;
+      padding: 10px;
+      border-top: 1px solid #333;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Mysterious Dude TV</h1>
+    <p>Where memes, mysteries & blogs meet.</p>
+  </header>
+
+  <nav>
+    <a href="#blog">Blog</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="section" id="blog">
+    <h2>Create Blog Post</h2>
+    <input type="text" id="title" placeholder="Post Title" />
+    <textarea id="content" rows="5" placeholder="Write something mysterious..."></textarea>
+    <button onclick="postBlog()">Post</button>
+
+    <div id="blogPosts"></div>
+  </div>
+
+  <div class="section" id="about">
+    <h2>About Me</h2>
+    <p>Hi, I’m Levis Mwangiru — the creator of Mysterious Dude TV. I love deep stories, mysterious vibes, and memes that go viral. Follow my blog and YouTube for weird, funny, and thought-provoking content.</p>
+  </div>
+
+  <div class="section" id="contact">
+    <h2>Contact</h2>
+    <p><strong>Phone:</strong> 0708143953</p>
+    <p><strong>Email:</strong> mwangirulevis@gmail.com</p>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Mysterious Dude TV</p>
+  </footer>
+
+  <script>
+    function postBlog() {
+      const title = document.getElementById('title').value;
+      const content = document.getElementById('content').value;
+      if (!title || !content) return;
+
+      const post = document.createElement('div');
+      post.className = 'comment-box';
+      post.innerHTML = \`<h3>\${title}</h3><p>\${content}</p><input type="text" placeholder="Leave a comment..." onkeypress="handleComment(event, this)">\`;
+
+      document.getElementById('blogPosts').prepend(post);
+
+      document.getElementById('title').value = '';
+      document.getElementById('content').value = '';
+    }
+
+    function handleComment(event, input) {
+      if (event.key === 'Enter') {
+        const comment = document.createElement('p');
+        comment.textContent = '💬 ' + input.value;
+        input.parentNode.insertBefore(comment, input);
+        input.value = '';
+      }
+    }
+  </script>
+</body>
+  </html>
